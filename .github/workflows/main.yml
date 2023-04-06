@@ -15,8 +15,8 @@ jobs:
        uses: actions/checkout@v3
        with:
         fetch-depth: 2
-     - name: FTP Deploy to Hostgator
-       uses: SamKirkland/FTP-Deploy-Action@4.3.4
+     - name: FTP Deploy to WPEngine
+       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
        with:
          server: githubaction.sftp.wpengine.com
          username: githubaction-sftp-github  
