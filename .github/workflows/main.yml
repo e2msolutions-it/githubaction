@@ -16,12 +16,12 @@ jobs:
        with:
         fetch-depth: 2
      - name: FTP Deploy to WPEngine
-       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+       uses: wlixcc/SFTP-Deploy-Action@v1.2.4
        with:
          server: githubaction.sftp.wpengine.com
          username: githubaction-sftp-github  
          password: ${{ secrets.PROD_FTP_PASSWORD }}
-         local-dir: ./
+         local_path: './wp-content/'
+         remote_path: 'wp-content'
          port: 2222
-         protocol: ftps
-         exclude: '.git'
+         sftp_only: true
