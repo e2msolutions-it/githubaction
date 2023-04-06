@@ -2,9 +2,6 @@ name: production
 on:
  push:
   branches: [ master ]
-# Allows you to run this workflow manually from the Actions tab
-workflow_dispatch:
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 # This workflow contains a single job called "build"
   build:
@@ -15,16 +12,16 @@ jobs:
       shell: bash
       working-directory: ./
   steps:
-    - uses: actions/checkout@v2
+  - uses: actions/checkout@v3
     with:
       fetch-depth: 2
-    - name: FTP Deploy to Hostgator
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
-        server: githubaction.sftp.wpengine.com
-        username: githubaction-sftp-github  
-        password: ${{ secrets.PROD_FTP_PASSWORD }}
-        localRoot: ./
-        port: 2222
-        protocol: ftps
-        exclude: '.git'
+  - name: FTP Deploy to Hostgator
+    uses: SamKirkland/FTP-Deploy-Action@4.0.0
+    with:
+      server: githubaction.sftp.wpengine.com
+      username: githubaction-sftp-github  
+      password: ${{ secrets.PROD_FTP_PASSWORD }}
+      localRoot: ./
+      port: 2222
+      protocol: ftps
+      exclude: '.git'
