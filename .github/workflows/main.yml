@@ -3,25 +3,23 @@ on:
  push:
   branches: [ master ]
 jobs:
-# This workflow contains a single job called "build"
   build:
-# The type of runner that the job will run on
-  runs-on: ubuntu-latest
-  defaults:
-    run:
-      shell: bash
-      working-directory: ./
-  steps:
-  - uses: actions/checkout@v3
-    with:
-      fetch-depth: 2
-  - name: FTP Deploy to Hostgator
-    uses: SamKirkland/FTP-Deploy-Action@4.0.0
-    with:
-      server: githubaction.sftp.wpengine.com
-      username: githubaction-sftp-github  
-      password: ${{ secrets.PROD_FTP_PASSWORD }}
-      localRoot: ./
-      port: 2222
-      protocol: ftps
-      exclude: '.git'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 2
+    - name: FTP Deploy to Hostgator
+      uses: SamKirkland/FTP-Deploy-Action@4.3.4
+      with:
+        server: githubaction.sftp.wpengine.com
+        username: githubaction-sftp-github  
+        password: ${{ secrets.PROD_FTP_PASSWORD }}
+        localRoot: ./
+        port: 2222
+        protocol: ftps
+        exclude: '.git'
