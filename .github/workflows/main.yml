@@ -21,5 +21,6 @@ jobs:
          server: githubaction.sftp.wpengine.com
          username: githubaction-sftp-github  
          password: ${{ secrets.PROD_FTP_PASSWORD }}
+         remote_path: '/'
          port: 2222
          sftp_only: true
